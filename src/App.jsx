@@ -1,19 +1,23 @@
-import { useState } from 'react'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import Header from "./components/Header";
+import Logo from "./components/Logo";
+import ImageLinkForm from "./components/ImageLinkForm";
+import FaceRecognition from "./components/FaceRecognition";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <>
-       <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <h1 className="text-4xl font-bold text-blue-600">
-        Hello Tailwind v4!
-      </h1>
-    </div>
+      <div className="bg-gray-900 min-h-screen text-white">
+        <Header />
+        <Logo />
+        <ImageLinkForm />
+        <FaceRecognition />
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
