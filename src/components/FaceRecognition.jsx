@@ -25,15 +25,15 @@
                 boxShadow: '0 0 20px rgba(34, 211, 238, 0.6)',
               }}
             >
-              <div className="absolute -top-8 left-0 bg-cyan-500 text-white px-3 py-1 rounded-lg text-sm font-semibold">
+              <div className="absolute -top-8 left-0 bg-slate-500 text-white px-3 py-1 rounded-lg text-sm font-semibold">
                 Face Detected
               </div>
             </div>
           )}
         </div>
       ) : (
-        <div className="bg-slate-900/30 backdrop-blur-sm border-2 border-dashed border-slate-700 rounded-2xl p-20 text-center">
-          <Scan className="w-16 h-16 text-gray-600 mx-auto mb-4" />
+        <div className="bg-slate-400/30 backdrop-blur-sm border-2 border-dashed border-slate-700 rounded-2xl p-20 text-center">
+          <Scan className="w-16 h-16 text-black-600 mx-auto mb-4" />
           <p className="text-gray-500 text-lg">Enter an image URL to get started</p>
         </div>
       )}

@@ -19,12 +19,12 @@ const ImageLinkForm = ({imageUrl, handleDetect}) => {
               value={imageUrl}
               onChange={(e) => setImageUrl(e.target.value)}
               placeholder="https://example.com/image.jpg"
-              className="w-full pl-12 pr-4 py-4 bg-slate-800/50 border border-slate-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent transition-all"
+              className="w-full pl-12 pr-4 py-4 bg-slate-400/50 border border-slate-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent transition-all"
             />
           </div>
           <button
             onClick={handleDetect}
-            className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 rounded-xl font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-cyan-500/50 flex items-center gap-2"
+            className="px-8 py-4 bg-gradient-to-r from-slate-500 to-blue-900 hover:from-cyan-600 hover:to-blue-700 rounded-xl font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-cyan-500/50 flex items-center gap-2"
           >
             <Sparkles className="w-5 h-5" />
             Detect
