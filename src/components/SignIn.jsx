@@ -58,7 +58,7 @@ export default function SignIn({ onSignIn }) {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full px-4 py-3 bg-slate-400/50 border border-slate-700 rounded-xl text-slate-600 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent transition-all"
+                className="w-full px-4 py-3 bg-slate-400/50 border border-slate-700 rounded-xl text-slate-600 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent transition-all"
               />
             </div>
 
