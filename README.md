@@ -13,6 +13,10 @@
 - Functional Components
 - Logo with Brain Icon - React Parallax Tilt Library
 - Background with Particles BG - npm package
+- Face Recognition 
+- Image Link Form
+- Navigation
+- SignIn
 
 ## Using Vite building
 Vite uses the native ES modules feature in the browser to handle imports, while webpack and Parcel use a more traditional approach of bundling all the files together. This allows for faster development builds and hot module replacement with Vite
