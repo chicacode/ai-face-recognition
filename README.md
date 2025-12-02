@@ -1,16 +1,47 @@
-# React + Vite
+# React + Vite Face Recognition APP 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Objective: Create an application with React + Vite that fetch data API from Clarifai AI Model "face-detection"
+- https://clarifai.com/clarifai/main/models/face-detection?tab=overview
+- https://github.com/chicacode/ai-face-recognition
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Project Requirements: 
+1. Visual Aesthetic
+- Light futuristic theme - Glassmorphism effects - Smoth over animations and transitions
 
-## React Compiler
+2. React Features:
+- Functional Components
+- Logo with Brain Icon - React Parallax Tilt Library
+- Background with Particles BG - npm package
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Using Vite building
+Vite uses the native ES modules feature in the browser to handle imports, while webpack and Parcel use a more traditional approach of bundling all the files together. This allows for faster development builds and hot module replacement with Vite
+source - medium by Erbil Nas
 
-## Expanding the ESLint configuration
+## Tools
+- React Js 
+- Vite
+- TailwindCss
+- React Parallax Tilt
+- Particles BG
+- React Router Dom
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+● Hooks
+Class Components
+● Lifecycle methods
+React Router (optional if your app is Single Page)
+
+## App evolution
+
+![alt text](./public/face-detected.png "image")
+
+## References
+- https://clarifai.com/clarifai/main/models/face-detection?tab=overview
+- https://www.npmjs.com/package/particles-bg
+- https://mkosir.github.io/react-parallax-tilt/?path=/story/react-parallax-tilt--parallax-effect-img
+- https://docs.clarifai.com/compute/inference/clarifai/api-legacy/#predict-via-url
+
+## Responsiveness
+Website should work on both web and smartphone sizes
+
+## Developed by: Geri
