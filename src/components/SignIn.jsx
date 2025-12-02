@@ -1,23 +1,34 @@
 import { use, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { signInUser } from "../services/api";
 import Logo from "./Logo";
 
 export default function SignIn({ onSignIn }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
     // Basic validation
     if (!email || !password) {
       setError("Please fill in all fields.");
       return;
     }
 
-    onSignIn({ email, name: email.split("@")[0], password });
-    navigate("/app");
+    setLoading(true);
+    try {
+      const data = await signInUser(email, password);
+      onSignIn(data.user);
+      navigate("/home");
+    } catch (err) {
+      setError(err.message || "Sign In failed. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -64,9 +75,10 @@ export default function SignIn({ onSignIn }) {
 
             <button
               type="submit"
+              disabled={loading}
               className="w-full py-4 bg-gradient-to-r from-slate-500 to-blue-900 hover:from-cyan-600 hover:to-blue-900 text-white rounded-xl font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-cyan-500/50"
             >
-              Sign In
+              {loading ? "Signing In..." : "Sign In"}
             </button>
           </form>
 

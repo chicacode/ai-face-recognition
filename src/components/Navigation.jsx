@@ -2,7 +2,7 @@ import Tilt from "react-parallax-tilt";
 import { User, LogOut } from "lucide-react";
 import Logo from "./Logo";
 
-const Navigation = ({ user, handleSignOut }) => {
+const Navigation = ({ user, handleSignOut, entries }) => {
   return (
     <nav
       aria-label="Global"
@@ -19,7 +19,7 @@ const Navigation = ({ user, handleSignOut }) => {
           gyroscope={true}
         >
           <Logo />
-          <p className="flex justify-start font-bold text-cyan-800">Welcome, {user?.name}</p>
+          <p className="flex justify-start font-bold text-cyan-800">Welcome, {user?.name} • Entry count: {entries}</p>
         </Tilt>
       </div>
 

@@ -29,7 +29,7 @@ export default function Register({ onRegister }) {
 
     try {
       const data = await registerUser(name, email, password);
-      onRegister({ name, email, password });
+      onRegister(data.user);
       navigate("/home");
     } catch (err) {
       setLoading(false);
