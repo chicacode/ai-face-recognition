@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -13,6 +13,18 @@ import "./App.css";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    const token = localStorage.getItem("token");
+
+    if (storedUser && token) {
+      setUser(JSON.parse(storedUser));
+    }
+
+    setLoading(false);
+  }, []);
 
   const handleSignIn = (userData) => {
     setUser(userData);
@@ -26,9 +38,16 @@ function App() {
     setUser(null);
   };
 
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white flex items-center justify-center">
+        <div className="text-xl">Loading...</div>
+      </div>
+    );
+  }
   return (
     <Router>
-       <ParticlesBg type="cobweb" bg={true} />
+      <ParticlesBg type="cobweb" bg={true} />
       <Routes>
         {/* Navigate to SignIn if NOT logged in */}
         <Route
