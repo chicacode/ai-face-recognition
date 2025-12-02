@@ -3,8 +3,15 @@ const MODEL_ID = "face-detection";
 const MODEL_VERSION_ID = "6dc7e46bc9124c5c8824be4822abe105";
 
 // When using PAT - Public Clarifai Model credentials
-// const USER_ID = 'clarifai'; 
+// const USER_ID = 'clarifai';
 // const APP_ID = 'main';
+// const MODEL_ID = 'face-detection';
+
+// // And call without version ID
+// const response = await fetch(
+//   `/api/v2/users/${USER_ID}/apps/${APP_ID}/models/${MODEL_ID}/outputs`,
+//   requestOptions
+// );
 
 // Function to call Clarifai API for face detection
 

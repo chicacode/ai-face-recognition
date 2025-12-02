@@ -7,7 +7,7 @@
       {imageUrl ? (
         <div className="relative bg-slate-900/50 backdrop-blur-sm border border-cyan-500/20 rounded-2xl p-4 shadow-2xl">
           <img
-            src={imageUrl}
+            src={imageUrl || 'https://via.placeholder.com/800x600?text=Upload+Image'}
             alt="Face Detection"
             className="w-full rounded-xl"
             onError={(e) => {
