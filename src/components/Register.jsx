@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { registerUser } from "../services/api";
 import Logo from "./Logo";
 
-export default function Register({onRegister}) {
+export default function Register({ onRegister }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Basic validation
     if (!name || !email || !password) {
@@ -22,18 +24,32 @@ export default function Register({onRegister}) {
       return;
     }
 
-    onRegister({ name, email, password });
-    navigate("/home");
-  }
+    setLoading(true);
+    setError("");
+
+    try {
+      const data = await registerUser(name, email, password);
+      onRegister({ name, email, password });
+      navigate("/home");
+    } catch (err) {
+      setLoading(false);
+      setError(err.message || "Registration failed. Please try again.");
+      return;
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white flex items-center justify-center p-4">
       <div className="w-full max-w-md">
-         <Logo />
+        <Logo />
         {/* Register Form */}
         <div className="bg-slate-900/50 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-8 shadow-2xl">
-          <h2 className="text-2xl font-bold mb-6 text-center">Create New Account</h2>
-          
+          <h2 className="text-2xl font-bold mb-6 text-center">
+            Create New Account
+          </h2>
+
           {error && (
             <div className="mb-4 p-3 bg-red-500/10 border border-red-500/30 rounded-lg text-red-400 text-sm">
               {error}
@@ -82,9 +98,14 @@ export default function Register({onRegister}) {
 
             <button
               type="submit"
-              className="w-full py-4 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 rounded-xl font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-cyan-500/50"
+              disabled={loading}
+              className={`w-full py-4 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 rounded-xl font-semibold transition-all duration-300 ${
+                loading
+                  ? "opacity-50 cursor-not-allowed"
+                  : "hover:scale-105 shadow-lg hover:shadow-cyan-500/50"
+              }`}
             >
-              Register
+              {loading ? "Creating Account" : "Register"}
             </button>
           </form>
 
@@ -104,5 +125,4 @@ export default function Register({onRegister}) {
       </div>
     </div>
   );
-
 }
