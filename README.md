@@ -13,7 +13,7 @@
 - Functional Components
 - Logo with Brain Icon - React Parallax Tilt Library
 - Background with Particles BG - npm package
-- Face Recognition 
+- Face Recognition - AI model integrated
 - Image Link Form
 - Navigation
 - SignIn
