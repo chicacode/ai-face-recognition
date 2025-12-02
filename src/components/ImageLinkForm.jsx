@@ -1,6 +1,10 @@
 import { Scan, Link2, Sparkles } from 'lucide-react';
 
-const ImageLinkForm = ({imageUrl, handleDetect}) => {
+//https://m.media-amazon.com/images/M/MV5BZTIyZWY4ZjktOGJiZi00NGFkLTllMjctZjJjMmNiMjIxOTY2XkEyXkFqcGc@._V1_.jpg
+// https://samples.clarifai.com/face-det.jpg
+//https://clarifai.com/clarifai/main/models/face-detection?tab=overview
+
+const ImageLinkForm = ({ onDetect, onInputChanget, loading}) => {
     return (
        <div className="w-full max-w-3xl mx-auto mb-8">
       <div className="bg-gradient-to-r from-cyan-500/10 to-blue-500/10 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-8 shadow-2xl">
@@ -16,18 +20,18 @@ const ImageLinkForm = ({imageUrl, handleDetect}) => {
             <Link2 className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
             <input
               type="text"
-              value={imageUrl}
-              onChange={(e) => setImageUrl(e.target.value)}
+              onChange={onInputChanget}
               placeholder="https://example.com/image.jpg"
               className="w-full pl-12 pr-4 py-4 bg-slate-400/50 border border-slate-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent transition-all"
             />
           </div>
           <button
-            onClick={handleDetect}
+            onClick={onDetect}
+            disabled={loading}
             className="px-8 py-4 bg-gradient-to-r from-slate-500 to-blue-900 hover:from-cyan-600 hover:to-blue-700 rounded-xl font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-cyan-500/50 flex items-center gap-2"
           >
             <Sparkles className="w-5 h-5" />
-            Detect
+            {loading ? 'Detecting...' : 'Detect'}
           </button>
         </div>
       </div>

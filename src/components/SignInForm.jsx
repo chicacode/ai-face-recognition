@@ -17,7 +17,7 @@ import Logo from "./Logo";
                 <input
                   type="text"
                   placeholder="John Doe"
-                  className="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 bg-slate-600/50 border border-slate-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent transition-all"
                 />
               </div>
             )}
@@ -28,7 +28,7 @@ import Logo from "./Logo";
               <input
                 type="email"
                 placeholder="you@example.com"
-                className="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent transition-all"
+                className="w-full px-4 py-3 bg-slate-400/50 border border-slate-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent transition-all"
               />
             </div>
             <div>
@@ -38,7 +38,7 @@ import Logo from "./Logo";
               <input
                 type="password"
                 placeholder="••••••••"
-                className="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent transition-all"
+                className="w-full px-4 py-3 bg-slate-400/50 border border-slate-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent transition-all"
               />
             </div>
             <button
@@ -51,7 +51,7 @@ import Logo from "./Logo";
           <div className="mt-6 text-center">
             <button
               onClick={() => setShowSignIn(!showSignIn)}
-              className="text-cyan-900 hover:text-cyan-300 text-sm transition-colors"
+              className="text-cyan-900 hover:text-cyan-700 text-sm transition-colors"
             >
               {showSignIn
                 ? "Don't have an account? Register"

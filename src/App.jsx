@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { detectFaces, calculateFaceBox } from "./services/clarifai";
 import ParticlesBg from "particles-bg";
 import Navigation from "./components/Navigation";
 import SignInForm from "./components/SignInForm";
@@ -8,10 +9,13 @@ import Footer from "./components/Footer";
 import "./App.css";
 
 function App() {
+  const [imageUrl, setImageUrl] = useState("");
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [showSignIn, setShowSignIn] = useState(true);
-  const [imageUrl, setImageUrl] = useState("");
   const [detectedFace, setDetectedFace] = useState(false);
+  const [box, setBox] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleSignIn = (e) => {
     e.preventDefault();
@@ -24,12 +28,54 @@ function App() {
     setDetectedFace(false);
   };
 
-  const handleDetect = () => {
-    if (imageUrl.trim() !== "") {
-      // Simulate face detection
-      setDetectedFace(true);
-    } else {
+  const handleInputChange = (e) => {
+    console.log("Input changed:", e.target.value); // Debug log
+    const url = event.target.value;
+    console.log("Input changed:", url); // Debug log
+    setImageUrl(url);
+  };
+
+  const handleDetect = async () => {
+    console.log("Detecting with URL:", imageUrl); // Debug log
+
+    if (!imageUrl || imageUrl.trim() === "") {
+      setError("Please enter an image URL");
+      return;
+    }
+
+    setLoading(true);
+    setError("");
+
+    try {
+      const response = await detectFaces(imageUrl);
+      console.log("Clarifai Response:", response);
+
+      if (
+        response.outputs[0].data.regions &&
+        response.outputs[0].data.regions.length > 0
+      ) {
+        const regions = response.outputs[0].data.regions;
+
+        const img = document.getElementById("inputimage");
+        if (img) {
+          const faceBox = calculateFaceBox(regions[0], img.width, img.height);
+          setBox(faceBox);
+          setDetectedFace(true);
+          setError("");
+        }
+      } else {
+        setError("No faces detected. Please try another image.");
+        setDetectedFace(false);
+        setBox({});
+        return;
+      }
+    } catch (err) {
+      setError("Error detecting faces. Please try again.");
+      console.error("Detection error:", err);
+      setBox({});
       setDetectedFace(false);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -38,7 +84,7 @@ function App() {
       <ParticlesBg type="cobweb" bg={true} />
       <div className="relative z-10 min-h-screen px-4 py-8">
         {!isSignedIn ? (
-          <SignInForm showSignIn={showSignIn} handleSignIn={handleSignIn}/>
+          <SignInForm showSignIn={showSignIn} handleSignIn={handleSignIn} />
         ) : (
           <div className="min-h-screen p-6">
             <Navigation
@@ -46,8 +92,15 @@ function App() {
               showSignIn={showSignIn}
               setShowSignIn={handleSignOut}
             />
-            <ImageLinkForm imageUrl={imageUrl} handleDetect={handleDetect} />
-            <FaceRecognition detectedFace={detectedFace} imageUrl={imageUrl} />
+            <ImageLinkForm
+              onDetect={handleDetect}
+              onInputChange={handleInputChange}
+              loading={loading}
+            />
+            {error && (
+              <div className="text-red-400 text-center mb-4">{error}</div>
+            )}
+            <FaceRecognition imageUrl={imageUrl} box={box} />
 
             <Footer />
           </div>

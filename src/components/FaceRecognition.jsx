@@ -2,19 +2,19 @@
  import { Scan } from 'lucide-react';
 
 
- const FaceRecognition = ({imageUrl, detectedFace}) => (
+ const FaceRecognition = ({imageUrl, box }) => (
     <div className="w-full max-w-4xl mx-auto">
       {imageUrl ? (
         <div className="relative bg-slate-900/50 backdrop-blur-sm border border-cyan-500/20 rounded-2xl p-4 shadow-2xl">
           <img
-            src={imageUrl || 'https://via.placeholder.com/800x600?text=Upload+Image'}
+            src={imageUrl}
             alt="Face Detection"
             className="w-full rounded-xl"
             onError={(e) => {
-              e.currentTarget.src = 'https://via.placeholder.com/800x600?text=Invalid+Image+URL';
+              e.currentTarget.src = 'https://samples.clarifai.com/face-det.jpg';
             }}
           />
-          {detectedFace && (
+          { box && (
             <div
               className="absolute border-4 border-cyan-400 rounded-lg shadow-lg"
               style={{
