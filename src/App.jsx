@@ -29,17 +29,14 @@ function App() {
   };
 
   const handleInputChange = (e) => {
-    console.log("Input changed:", e.target.value); // Debug log
-    const url = event.target.value;
-    console.log("Input changed:", url); // Debug log
+    const url = e.target.value;
     setImageUrl(url);
   };
 
   const handleDetect = async () => {
-    console.log("Detecting with URL:", imageUrl); // Debug log
 
     if (!imageUrl || imageUrl.trim() === "") {
-      setError("Please enter an image URL");
+      setError("Please enter an image URL - Image URL cannot be empty.");
       return;
     }
 
@@ -93,8 +90,8 @@ function App() {
               setShowSignIn={handleSignOut}
             />
             <ImageLinkForm
-              onDetect={handleDetect}
               onInputChange={handleInputChange}
+              onDetect={handleDetect}
               loading={loading}
             />
             {error && (

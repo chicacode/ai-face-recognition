@@ -12,7 +12,6 @@ export const detectFaces = async (imageUrl) => {
   const USER_ID = import.meta.env.VITE_CLARIFAI_USER_ID;
   const APP_ID = import.meta.env.VITE_CLARIFAI_APP_ID;
 
-  console.log('Image URL being sent:', imageUrl); // Debug log
 
   const raw = JSON.stringify({
     user_app_id: {
@@ -29,7 +28,8 @@ export const detectFaces = async (imageUrl) => {
       },
     ],
   });
- console.log('Request body:', raw); // Debug log
+ 
+  // console.log('Request body:', raw); // Debug log
  
   const requestOptions = {
     method: "POST",
@@ -44,6 +44,7 @@ export const detectFaces = async (imageUrl) => {
   try {
     const response = await fetch(
       `/api/v2/models/${MODEL_ID}/versions/${MODEL_VERSION_ID}/outputs`,
+      // `/api/v2/models/${MODEL_ID}/outputs`,
       requestOptions
     );
 
@@ -54,7 +55,7 @@ export const detectFaces = async (imageUrl) => {
     }
 
     const result = await response.json();
-    console.log("API Result:", result);
+    // console.log("API Result:", result);
 
     if (result.status.code !== 10000) {
       throw new Error(result.status.description || "API request failed");
