@@ -22,6 +22,7 @@ export default function SignIn({ onSignIn }) {
     setLoading(true);
     try {
       const data = await signInUser(email, password);
+      console.log('data front', data.user)
       onSignIn(data.user);
       navigate("/home");
     } catch (err) {
@@ -76,7 +77,7 @@ export default function SignIn({ onSignIn }) {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-4 bg-gradient-to-r from-slate-500 to-blue-900 hover:from-cyan-600 hover:to-blue-900 text-white rounded-xl font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-cyan-500/50"
+              className="w-full py-4 bg-linear-to-r from-slate-500 to-blue-900 hover:from-cyan-600 hover:to-blue-900 text-white rounded-xl font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-cyan-500/50"
             >
               {loading ? "Signing In..." : "Sign In"}
             </button>

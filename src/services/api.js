@@ -25,6 +25,7 @@ export const registerUser = async (name, email, password) => {
 
 // SignIn user
 export const signInUser = async (email, password) => {
+  console.log('Front end', email, password)
     const response = await fetch(`${API_URL}/signin`, {
         method: 'POST',
         headers: {
