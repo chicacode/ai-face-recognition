@@ -36,7 +36,7 @@ export default function SignIn({ onSignIn }) {
     <div className="min-h-screen flex items-center justify-center p-4">
       <div className="w-full max-w-md space-y-6">
         <Logo />
-        <div className="bg-slate-500/50 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-8 shadow-2xl">
+        <div className="bg-slate-400/50 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-8 shadow-2xl">
           <h2 className="text-zinc-700 text-2xl font-bold mb-6 text-center">
             Sign In to Your Account
           </h2>
