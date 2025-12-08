@@ -32,7 +32,6 @@ export const signInUser = async (email, password) => {
         },
         body: JSON.stringify({ email, password }),
     });
-    console.log('Response', response)
     if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.message || 'SignIn failed');

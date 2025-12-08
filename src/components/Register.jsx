@@ -41,11 +41,11 @@ export default function Register({ onRegister }) {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white flex items-center justify-center p-4">
+    <div className="min-h-screen backdrop-grayscale-50 text-gray-800 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <Logo />
         {/* Register Form */}
-        <div className="bg-slate-900/50 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-8 shadow-2xl">
+        <div className="bg-slate-900/50 backdrop-blur-xl border border-slate-500/20 rounded-2xl p-8 shadow-2xl">
           <h2 className="text-2xl font-bold mb-6 text-center">
             Create New Account
           </h2>
@@ -58,7 +58,7 @@ export default function Register({ onRegister }) {
 
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label className="block text-sm font-medium text-gray-400 mb-2">
+              <label className="block text-md font-medium text-gray-800 mb-2">
                 Full Name
               </label>
               <input
@@ -71,7 +71,7 @@ export default function Register({ onRegister }) {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-400 mb-2">
+              <label className="block text-md font-medium text-gray-800 mb-2">
                 Email Address
               </label>
               <input
@@ -84,7 +84,7 @@ export default function Register({ onRegister }) {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-400 mb-2">
+              <label className="block text-md font-medium text-gray-800 mb-2">
                 Password
               </label>
               <input
@@ -99,10 +99,10 @@ export default function Register({ onRegister }) {
             <button
               type="submit"
               disabled={loading}
-              className={`w-full py-4 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 rounded-xl font-semibold transition-all duration-300 ${
+              className={`w-full py-4 bg-gradient-to-r from-slate-500 to-blue-900 hover:from-zinc-300 hover:to-blue-900 rounded-xl font-semibold transition-all duration-300 ${
                 loading
                   ? "opacity-50 cursor-not-allowed"
-                  : "hover:scale-105 shadow-lg hover:shadow-cyan-500/50"
+                  : "hover:scale-105 shadow-sm hover:shadow-slate-500/50"
               }`}
             >
               {loading ? "Creating Account" : "Register"}
@@ -112,7 +112,7 @@ export default function Register({ onRegister }) {
           <div className="mt-6 text-center">
             <Link
               to="/signin"
-              className="text-cyan-400 hover:text-cyan-300 text-sm transition-colors"
+              className="text-gray-800 hover:text-blue-900 text-sm transition-colors"
             >
               Already have an account? Sign In
             </Link>

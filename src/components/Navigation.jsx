@@ -19,7 +19,7 @@ const Navigation = ({ user, handleSignOut, entries }) => {
           gyroscope={true}
         >
           <Logo />
-          <p className="flex justify-start font-bold text-cyan-800">Welcome, {user?.name} • Entry count: {entries}</p>
+          <p className="flex justify-start font-bold text-blue-900/75">Welcome, {user?.name} • Entry count: {entries}</p>
         </Tilt>
       </div>
 

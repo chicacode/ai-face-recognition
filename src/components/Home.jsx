@@ -38,7 +38,6 @@ export default function Home({ user, onSignOut }) {
 
     try {
       const response = await detectFacesAPI(imageUrl);
-      console.log("Clarifai Response:", response);
 
       if (
         response.outputs[0].data.regions &&
@@ -65,7 +64,6 @@ export default function Home({ user, onSignOut }) {
       }
     } catch (err) {
       setError("Error detecting faces. Please try again.");
-      console.error("Detection error in catch:", err);
       setBox({});
     } finally {
       setLoading(false);
@@ -73,7 +71,6 @@ export default function Home({ user, onSignOut }) {
   };
 
   const handleSignOut = () => {
-    console.log("Signing out...");
     signOutAPI();
     setImageUrl("");
     onSignOut();

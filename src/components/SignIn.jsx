@@ -22,7 +22,6 @@ export default function SignIn({ onSignIn }) {
     setLoading(true);
     try {
       const data = await signInUser(email, password);
-      console.log('data front', data.user)
       onSignIn(data.user);
       navigate("/home");
     } catch (err) {
