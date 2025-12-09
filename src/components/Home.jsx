@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { detectFaces as detectFacesAPI, updateEntries, signOut as signOutAPI } from "../services/api";
+import {
+  detectFaces as detectFacesAPI,
+  updateEntries,
+  signOut as signOutAPI,
+} from "../services/api";
 import { calculateFaceBox } from "../services/clarifai";
 import ParticlesBg from "particles-bg";
 import ImageLinkForm from "./ImageLinkForm";
@@ -13,11 +17,11 @@ export default function Home({ user, onSignOut }) {
   const [box, setBox] = useState({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [ entries, setEntries] = useState(user.entries || 0);
+  const [entries, setEntries] = useState(user.entries);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if(user && user.entries !== entries) {
+    if (user && user.entries !== entries) {
       setEntries(user.entries);
     }
   }, [user, entries]);
@@ -44,18 +48,17 @@ export default function Home({ user, onSignOut }) {
         response.outputs[0].data.regions.length > 0
       ) {
         const regions = response.outputs[0].data.regions;
-        const img = document.getElementById("inputimage");
+        const img = imageUrl;
 
         if (img) {
           const faceBox = calculateFaceBox(regions[0], img.width, img.height);
           setBox(faceBox);
           setError("");
-          setImageUrl("");
+          //setImageUrl("");
 
           // update entries count
-          const updatedEntries = await updateEntries(user.id);
-          setEntries(updatedEntries.entries);
-          // Optionally update user object if needed
+           const updatedEntries = await updateEntries(user.id);
+            setEntries(updatedEntries.entries);
         }
       } else {
         setError("No faces detected. Please try another image.");
@@ -82,7 +85,11 @@ export default function Home({ user, onSignOut }) {
       <ParticlesBg type="cobweb" bg={true} />
       <div className="relative z-10 min-h-screen px-4 py-8">
         <div className="min-h-screen p-6">
-          <Navigation user={user} handleSignOut={handleSignOut} entries={entries}/>
+          <Navigation
+            user={user}
+            handleSignOut={handleSignOut}
+            entries={entries}
+          />
           <ImageLinkForm
             onInputChange={handleInputChange}
             onDetect={handleDetect}

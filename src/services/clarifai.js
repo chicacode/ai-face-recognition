@@ -68,7 +68,6 @@ export const detectFaces = async (imageUrl) => {
     }
 
     const result = await response.json();
-    // console.log("API Result:", result);
 
     if (result.status.code !== 10000) {
       throw new Error(result.status.description || "API request failed");

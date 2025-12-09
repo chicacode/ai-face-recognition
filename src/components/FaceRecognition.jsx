@@ -1,4 +1,3 @@
- 
  import { Scan } from 'lucide-react';
 
 

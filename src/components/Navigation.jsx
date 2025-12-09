@@ -3,6 +3,7 @@ import { User, LogOut } from "lucide-react";
 import Logo from "./Logo";
 
 const Navigation = ({ user, handleSignOut, entries }) => {
+  console.log('what entries in nav', entries)
   return (
     <nav
       aria-label="Global"

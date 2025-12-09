@@ -101,6 +101,7 @@ export const detectFaces = async (imageUrl) => {
   });
 
   const data = await response.json();
+  console.log('data img', data)
 
   if (!response.ok) {
     throw new Error(data.error || 'Failed to detect faces');
