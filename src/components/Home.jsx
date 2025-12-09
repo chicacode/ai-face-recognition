@@ -17,14 +17,14 @@ export default function Home({ user, onSignOut }) {
   const [box, setBox] = useState({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [entries, setEntries] = useState(user.entries);
+  const [entries, setEntries] = useState(user?.entries || 0);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (user && user.entries !== entries) {
       setEntries(user.entries);
     }
-  }, [user, entries]);
+  }, [user]);
 
   const handleInputChange = (e) => {
     const url = e.target.value;
