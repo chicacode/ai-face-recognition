@@ -16,8 +16,8 @@ export const registerUser = async (name, email, password) => {
     }
     const data = await response.json();
 
-    // localStorage
-    localStorage('token', data.token);
+    // localStorage object.
+    localStorage.setItem('token', data.token);
     localStorage.setItem('user', JSON.stringify(data.user));
 
     return data;
