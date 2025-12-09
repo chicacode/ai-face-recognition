@@ -48,10 +48,11 @@ export default function Home({ user, onSignOut }) {
         response.outputs[0].data.regions.length > 0
       ) {
         const regions = response.outputs[0].data.regions;
-        const img = imageUrl;
+        const img = document.getElementById('inputimage');
 
         if (img) {
-          const faceBox = calculateFaceBox(regions[0], img.width, img.height);
+          const faceBox = calculateFaceBox(regions[0],  document.getElementById('inputimage').width,
+          document.getElementById('inputimage').height);
           setBox(faceBox);
           setError("");
           //setImageUrl("");

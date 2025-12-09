@@ -21,6 +21,7 @@ const ImageLinkForm = ({ onDetect, onInputChange, loading }) => {
             <input
               type="text"
               onChange={onInputChange}
+              placeholder="https://example.com/image.jpg"
               className="w-full pl-12 pr-4 py-4 bg-slate-400/50 border border-slate-700 rounded-xl text-slate-600 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent transition-all"
             />
           </div>
