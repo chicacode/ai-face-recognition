@@ -1,7 +1,5 @@
 import { Scan, Link2, Sparkles } from "lucide-react";
 
-//https://m.media-amazon.com/images/M/MV5BZTIyZWY4ZjktOGJiZi00NGFkLTllMjctZjJjMmNiMjIxOTY2XkEyXkFqcGc@._V1_.jpg
-// https://samples.clarifai.com/face-det.jpg
 //https://clarifai.com/clarifai/main/models/face-detection?tab=overview
 
 const ImageLinkForm = ({ onDetect, onInputChange, loading }) => {
