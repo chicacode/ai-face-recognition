@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import {
   detectFaces as detectFacesAPI,
   updateEntries,
-  signOut as signOutAPI,
+  signOut as signOutAPI
 } from "../services/api";
 import { calculateFaceBox } from "../services/clarifai";
 import ParticlesBg from "particles-bg";
@@ -25,6 +25,7 @@ export default function Home({ user, onSignOut }) {
       setEntries(user.entries);
     }
   }, [user]);
+
 
   const handleInputChange = (e) => {
     const url = e.target.value;
@@ -48,18 +49,21 @@ export default function Home({ user, onSignOut }) {
         response.outputs[0].data.regions.length > 0
       ) {
         const regions = response.outputs[0].data.regions;
-        const img = document.getElementById('inputimage');
+        const img = document.getElementById("inputimage");
 
         if (img) {
-          const faceBox = calculateFaceBox(regions[0],  document.getElementById('inputimage').width,
-          document.getElementById('inputimage').height);
+          const faceBox = calculateFaceBox(
+            regions[0],
+            document.getElementById("inputimage").width,
+            document.getElementById("inputimage").height
+          );
           setBox(faceBox);
           setError("");
           //setImageUrl("");
 
           // update entries count
-           const updatedEntries = await updateEntries(user.id);
-            setEntries(updatedEntries.entries);
+          const updatedEntries = await updateEntries(user.id);
+          setEntries(updatedEntries.entries);
         }
       } else {
         setError("No faces detected. Please try another image.");
