@@ -1,4 +1,5 @@
-const API_URL = 'http://localhost:3001';
+const API_URL = import.meta.env.VITE_API_URL || 'https://your-backend.vercel.app'
+console.log('API_URL',API_URL)
 
 // Register a new user
 export const registerUser = async (name, email, password) => {
